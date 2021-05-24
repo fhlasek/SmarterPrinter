@@ -2,7 +2,7 @@
 
 The server part of the project is deployed on a public IP unix machine
 using a traditional Telegraf-InfluxDB-Granafa stack with mosquitto
-as a MQTT data broker.
+as an MQTT data broker.
 
 ## Mosquitto
 
