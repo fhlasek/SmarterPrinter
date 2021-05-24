@@ -32,10 +32,10 @@ root_url = http://your.domain.org
 ### Data Source
 
 All the data for this project are stored in InfluxDB.
-There are two differrent Query Languages for which it can be configured.
+There are two different Query Languages for which it can be configured.
 Some of the basic queries (see below) use a simple **InfluxQL**, but for
-a more sophisticated functionality, setting up a more advanced and complicated
-**Flux** is almost a necesity.
+more sophisticated functionality, setting up a more advanced and complicated
+**Flux** is almost a necessity.
 
 **[InfluxQL](https://docs.influxdata.com/influxdb/v1.8/query_language/)**
 
@@ -70,7 +70,7 @@ Grafana's built-in UI supports these basic queries without the need to write any
 
 ### Straightforward
 
-Sliglty more complicated queries require writing a query in the InfluxQL language
+Slightly more complicated queries require writing a query in the InfluxQL language
 
 ![printed pages per day](./images/printed_pages_per_day.png)
 
@@ -81,27 +81,27 @@ WHERE $timeFilter
 GROUP BY time($__interval) fill(null)
 ```
 
-This query computes the difference of the total number of printed pages between
+This query computes the difference in the total number of printed pages between
 consecutive days. However, because this metric would be very noisy, it is
 smoothed over 200 days by computing moving average. This approach provides
 a sense of a long-term trend rather than an instant measurement for individual days.
 
 ### Advanced
 
-Finally, some of the most fancy functionality of the dashboard is built on Flux
+Finally, some of the fanciest functionality of the dashboard is built on Flux
 queries.
 
 ![ink duration](./images/ink_duration.png)
 
 ![when will ink run out](./images/when_will_ink_run_out.png)
 
-In fact, the query for the above 3 plots is quite similar, therefore we only
+The query for the above 3 plots is quite similar, therefore we only
 show here the query for the last one, other queries can be found in the full
 configuration [model.json](./model.json).
 
 ```
 // Compute the daily consumption rate for each cartridge, excluding the negative values that
-// typically mean that the cartridge was actually replaced on that day.
+// typically mean that the cartridge was replaced on that day.
 ConsumptionRate = from(bucket: "hlasek_home")
   |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
   |> filter(fn: (r) => r._measurement == "printer" and r._field == "prtMarkerSuppliesLevel")
@@ -122,7 +122,7 @@ RateAndCurrent = join(
   on: ["prtMarkerSuppliesDescription"]
 )
 
-// Compute the running out date as a linear projection of the consumption rate
+// Compute the running out the date as a linear projection of the consumption rate
 // from the current rate and date.
 RunningOutDateMs = RateAndCurrent
   // Take the date from the end of the selected time range and convert it to unit.
