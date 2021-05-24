@@ -1,16 +1,16 @@
 # Pi
 
 This folder describes the setup and the configuration of the Raspberry Pi
-which reguraly queries the printer for statistics over SNMP and publishes 
+which regularly queries the printer for statistics over SNMP and publishes 
 the metrics over MQTT protocol.
 
 ## Setup
 
-It is conveninet to use printer-specific defition installed via
+It is convenient to use printer-specific definition installed via
 [MIB](https://en.wikipedia.org/wiki/Management_information_base)
 for the SNMP queries.
 
-In our specific setup, we use HP printer and therefore corresponding defitions
+In our specific setup, we use HP printer and therefore corresponding definitions
 
 [http://www.circitor.fr/Mibs/Mib/H/HP-LASERJET-COMMON-MIB.mib
 ](http://www.circitor.fr/Mibs/Mib/H/HP-LASERJET-COMMON-MIB.mib)
